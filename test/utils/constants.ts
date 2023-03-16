@@ -47,12 +47,16 @@ class Variables {
         this.query = query
     }
 
-    setCreatedUsers(createdUsers: any){
-        this.createdUsers = [...this.createdUsers, ...createdUsers]
+    setCreatedUsers(createdUsers: any[]){
+        this.createdUsers = createdUsers
     }
     
     setAccessTokens(accessToken: string[]){
         this.accessTokens = accessToken
+    }
+
+    setCookies(cookies: any[]){
+        this.cookies = cookies
     }
     
 }

@@ -6,6 +6,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './features/auth/auth.module';
+import { CookieStrategy } from './features/auth/strategies/cookie.strategy';
 import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
 import { LocalStrategy } from './features/auth/strategies/local.strategy';
 import { UsersModule } from './features/users/users.module';
@@ -34,6 +35,7 @@ import { AllDataModule } from './helpers/delete-all-data/delete-all-data.module'
     AppService,
     LocalStrategy, 
     JwtStrategy,
+    CookieStrategy,
   ],
 })
 export class AppModule {}

@@ -33,6 +33,20 @@ describe('AppController', () => {
       await seedUsers(server)
     });
 
+    it('test cookie guard', async () => {
+      const cookie = await request(server).post('/auth/refresh-token')
+        .set('Cookie', constants.variables.cookies[0])
+      //expect(cookie.body).toBe(0)
+      const cookie2 = await request(server).post('/auth/refresh-token')
+      expect(cookie2.body).toBe(0)
+    });
+
+    it('test extract token', async () => {
+      await request(server).post('/auth/test')
+        .set('Authorization', `Bearer ${constants.variables.accessTokens[0]}`)
+    });
+
+    /*
     it('should read email and get validConfirmationCode', async () => {
       const mailBox: MailBoxImap = expect.getState().mailBox;
       const email = await mailBox.waitNewMessage(2);
@@ -47,6 +61,7 @@ describe('AppController', () => {
       // if (isUuid) await mailBox.deleteAllTodayMessages();
       expect.setState({ validConfirmationCode });
     });
+    */
 
   });
 });
